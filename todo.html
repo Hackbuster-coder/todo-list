@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: lightcoral;
+    }
+    #myInput {
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        background-color: white;
+    }
+    #myUL {
+        list-style-type: none;
+    }
+    #myUL li {
+        padding: 12px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
+    #myUL li:hover {
+        background-color: #f9f9f9;
+    }
+    .checked {
+        text-decoration: line-through;
+    }
+</style>
+</head>
+<body>
+
+<h2><center><u>To Do List</u></center></h2>
+
+<input type="text" id="myInput" placeholder="Title...">
+<button onclick="newElement()">Add</button>
+
+<ul id="myUL">
+</ul>
+
+<script>
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  li.onclick = function() {
+    this.classList.toggle('checked');
+  };
+}
+</script>
+
+</body>
+</html>
